@@ -68,7 +68,7 @@ class ForceEstimator(RosDataHandler):
             output_dim=3,
             dropout_prob=0,
             device=self.device)
-        self.model.load_state_dict(torch.load("./online_regression/model.pth",map_location=torch.device(self.device)))
+        self.model.load_state_dict(torch.load("./online_regression/st.pth",map_location=torch.device(self.device)))
 
 
         
@@ -77,8 +77,8 @@ class ForceEstimator(RosDataHandler):
         self.seq_len = seq_len
         self.vecs = []
         self.cal_val=[]
-        self.x_scaler=joblib.load('./online_regression/X.save')
-        self.y_scaler=joblib.load('./online_regression/Y.save')
+        self.x_scaler=joblib.load('./online_regression/X_st.save')
+        self.y_scaler=joblib.load('./online_regression/Y_st.save')
 
         print("Waiting for messages to arrive")
         while not self.all_streams_recieved():
